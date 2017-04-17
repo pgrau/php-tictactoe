@@ -11,9 +11,11 @@ php app/console t:g:s
 
 ## Features
     Multiplayer: Player 1 Vs Machine or Player 1 Vs Player 2
-    Custom icon;
-    Custom icon's color. Availabe colors: black, red, green, yellow, blue, magenta, cyan and white;
+    Custom icon
+    Custom icon's color. Availabe colors: black, red, green, yellow, blue, magenta, cyan and white
     User's Repository is implemented in memory. You have two users availables: pepe and juan
+    
+    ![alt tag](https://raw.githubusercontent.com/pgrau/php-tictactoe/master/docs/custom_game.png)
     
 <!--You can see all domain events sent in the logs folder.-->
 

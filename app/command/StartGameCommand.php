@@ -6,6 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableSeparator;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ChoiceQuestion;
@@ -30,7 +31,10 @@ class StartGameCommand extends Command
         $this
             ->setName('tictactoe:game:start')
             ->setDescription('Start game')
-
+            ->addArgument('color1', InputArgument::OPTIONAL, 'Color of player 1', 'magenta')
+            ->addArgument('color2', InputArgument::OPTIONAL, 'Color of player 2', 'cian')
+            ->addArgument('icon1', InputArgument::OPTIONAL, 'Icon of player 1', ' X ')
+            ->addArgument('icon2', InputArgument::OPTIONAL, 'Icon of player 2', ' O ')
         ;
     }
 
@@ -43,12 +47,20 @@ class StartGameCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $colorPlayerOne = $input->getArgument('color1');
+        $colorPlayerTwo = $input->getArgument('color2');
+        $iconPlayerOne = $input->getArgument('icon1');
+        $iconPlayerTwo = $input->getArgument('icon2');
+
         $helper = $this->getHelper('question');
         $numOfPlayers = $this->askNumOfPlayers($input, $output, $helper);
         $players = $this->askUsernamePlayerAndGetPlayers($input, $output, $helper, $numOfPlayers);
 
         $game = new Game(new Size(3, 3), $players[0], $players[1] ?? null);
-        $game->customizeIcons('<fg=magenta;> X </>', '<fg=yellow;> O </>');
+        $game->customizeIcons(
+            "<fg={$colorPlayerOne};> {$iconPlayerOne} </>",
+            "<fg={$colorPlayerTwo};> {$iconPlayerTwo}  </>"
+        );
         while (! $game->isFinished()) {
             $this->renderTable($output, $game);
 
