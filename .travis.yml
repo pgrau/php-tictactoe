@@ -13,11 +13,10 @@ before_install:
 
 install:
   - composer install
-  - composer require satooshi/php-coveralls:* --dev
 
 script:
   - mkdir -p build/logs
   - php bin/phpunit -c phpunit-metrics-without-infrastructure.xml.dist --coverage-clover build/logs/clover.xml
 
 after_success:
-  - php vendor/bin/coveralls -v -c .coveralls.yml
+  - php bin/coveralls -v -c .coveralls.yml
