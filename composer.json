@@ -1,0 +1,49 @@
+{
+  "name": "pgrau/tic-tac-toe",
+  "license": "proprietary",
+  "type": "project",
+  "description": "TicTacToe",
+  "autoload": {
+    "psr-4": {
+      "TicTacToe\\": "src/TicTacToe/"
+    },
+    "classmap": [
+      "app/command/"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\TicTacToe\\": "tests/TicTacToe/"
+    }
+  },
+  "repositories": [
+
+  ],
+  "require": {
+    "php": "^7.1",
+    "symfony/console": "^3.2",
+    "beberlei/assert": "^2.6",
+    "carlosbuenosvinos/ddd": "^1.6",
+    "monolog/monolog": "^1.21",
+    "ramsey/uuid": "^3.6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.1",
+    "mockery/mockery": "~0.9",
+    "friendsofphp/php-cs-fixer": "^1.11",
+    "squizlabs/php_codesniffer": "^2.6"
+  },
+  "scripts": {
+    "post-install-cmd": [
+
+    ],
+    "post-update-cmd": [
+
+    ]
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}

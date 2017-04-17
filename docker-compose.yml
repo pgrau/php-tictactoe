@@ -1,0 +1,5 @@
+php:
+    build: app/config/environment/docker/php-fpm
+    volumes:
+        - ./:/var/www/tic-tac-toe
+    working_dir: /var/www/tic-tac-toe

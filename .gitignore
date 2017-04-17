@@ -1,0 +1,9 @@
+.idea
+/vendor/
+/bin/
+/metrics
+composer.lock
+composer.phar
+*.DS_Store
+*.cache
+
