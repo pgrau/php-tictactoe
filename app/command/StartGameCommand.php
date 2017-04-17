@@ -48,6 +48,7 @@ class StartGameCommand extends Command
         $players = $this->askUsernamePlayerAndGetPlayers($input, $output, $helper, $numOfPlayers);
 
         $game = new Game(new Size(3, 3), $players[0], $players[1] ?? null);
+        $game->customizeIcons('<fg=magenta;> X </>', '<fg=yellow;> O </>');
         while (! $game->isFinished()) {
             $this->renderTable($output, $game);
 

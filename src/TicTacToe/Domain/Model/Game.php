@@ -94,6 +94,13 @@ final class Game
         return $this->winner;
     }
 
+    public function customizeIcons($iconPlayerOne, $iconPlayerTwo) : self
+    {
+        $this->icons = [1 => $iconPlayerOne, 2 => $iconPlayerTwo];
+
+        return $this;
+    }
+
     public function move(int $x, int $y)
     {
         $this->validateMovement($x, $y);
