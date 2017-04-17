@@ -47,10 +47,7 @@ class StartGameCommand extends Command
         $numOfPlayers = $this->askNumOfPlayers($input, $output, $helper);
         $players = $this->askUsernamePlayerAndGetPlayers($input, $output, $helper, $numOfPlayers);
 
-        $size = new Size(3, 3);
-        $game = new Game($players[0], $players[1] ?? null);
-        $game->doBoardFromSize($size);
-
+        $game = new Game(new Size(3, 3), $players[0], $players[1] ?? null);
         while (! $game->isFinished()) {
             $this->renderTable($output, $game);
 

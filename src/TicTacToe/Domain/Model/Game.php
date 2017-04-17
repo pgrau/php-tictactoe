@@ -34,16 +34,15 @@ final class Game
     /** @var User */
     private $winner;
 
-    public function __construct(User $userOne, User $userTwo = null)
+    public function __construct(Size $size, User $userOne, User $userTwo = null)
     {
+        $this->doBoardFromSize($size);
+
         $this->start         = new \DateTimeImmutable();
         $this->playerOne     = $userOne;
-        $this->playerTwo     = $userTwo;
+        $this->playerTwo     = $userTwo ?: User::create(UserId::create(Uuid::uuid4()->toString()), 'computer');
         $this->multiplayer   = $userTwo ? true : false;
         $this->currentPlayer = $userOne;
-        if (! $this->playerTwo()) {
-            $this->playerTwo = User::create(UserId::create(Uuid::uuid4()->toString()), 'computer');
-        }
     }
 
     public function board(): array
