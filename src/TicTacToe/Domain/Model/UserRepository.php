@@ -12,6 +12,9 @@ interface UserRepository
 
     public function findByUsername(string $username) : ?User;
 
+    /** @return User[] */
+    public function findAll();
+
     public function persist(User $user) : User;
 
     public function delete(User $user) : int;

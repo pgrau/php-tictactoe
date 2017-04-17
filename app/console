@@ -8,4 +8,5 @@ use Symfony\Component\Console\Application;
 $application = new Application('Tic Tac Toe', '1.0.0');
 $application->add(new \App\Command\StartGameCommand());
 $application->add(new \App\Command\CreateUserCommand());
+$application->add(new \App\Command\DeleteUserCommand());
 $application->run();

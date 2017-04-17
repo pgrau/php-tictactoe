@@ -30,7 +30,7 @@ final class InMemoryUserRepository implements UserRepository
         return $user;
     }
 
-    public function delete(User $user): int
+    public function delete(User $user) : int
     {
         $numUsersAffected = 0;
         foreach ($this->users as $key => $item) {
@@ -57,7 +57,7 @@ final class InMemoryUserRepository implements UserRepository
         return $anUser;
     }
 
-    public function findByUsername(string $username): ?User
+    public function findByUsername(string $username) : ?User
     {
         $anUser = null;
         foreach ($this->users as $key => $item) {
@@ -70,13 +70,21 @@ final class InMemoryUserRepository implements UserRepository
         return $anUser;
     }
 
-    public function findOne(string $id): User
+    public function findOne(string $id) : User
     {
         if (! $anUser = $this->find($id)) {
             throw new \InvalidArgumentException('User not exist');
         }
 
         return $anUser;
+    }
+
+    /**
+     * @return \TicTacToe\Domain\Model\User[]
+     */
+    public function findAll()
+    {
+        return $this->users;
     }
 
     private function validateIfUsernameExist(string $username)
