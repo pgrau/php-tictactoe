@@ -7,6 +7,14 @@ You can see output app with the follow command line:
 
 php app/console t:g:s
 
+![alt tag](https://raw.githubusercontent.com/pgrau/php-tictactoe/master/docs/game.png)
+
+## Features
+    Multiplayer: Player 1 Vs Machine or Player 1 Vs Player 2
+    Custom icon;
+    Custom icon's color. Availabe colors: black, red, green, yellow, blue, magenta, cyan and white;
+    User's Repository is implemented in memory. You have two users availables: pepe and juan
+    
 <!--You can see all domain events sent in the logs folder.-->
 
 ## Mandatory requirements
