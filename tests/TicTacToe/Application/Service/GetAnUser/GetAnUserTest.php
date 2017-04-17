@@ -5,45 +5,36 @@ declare(strict_types=1);
 namespace Tests\TicTacToe\Application\Service\DeleteAnUser;
 
 use PHPUnit\Framework\TestCase;
-use TicTacToe\Application\Service\CreateAnUser\CreateAnUserRequest;
-use TicTacToe\Application\Service\CreateAnUser\CreateAnUserService;
-use TicTacToe\Application\Service\DeleteAnUser\DeleteAnUserException;
-use TicTacToe\Application\Service\DeleteAnUser\DeleteAnUserRequest;
-use TicTacToe\Application\Service\DeleteAnUser\DeleteAnUserService;
+use TicTacToe\Application\Service\GetAnUser\GetAnUserException;
+use TicTacToe\Application\Service\GetAnUser\GetAnUserRequest;
+use TicTacToe\Application\Service\GetAnUser\GetAnUserService;
 use TicTacToe\Infrastructure\Persistence\InMemory\InMemoryUserRepository;
 use TicTacToe\Domain\Model\User;
 
-class DeleteAnUserServiceTest extends TestCase
+class GetAnUserServiceTest extends TestCase
 {
-    /** @var DeleteAnUserService */
+    /** @var GetAnUserService */
     private $appService;
-
-    /** @var User */
-    private $anUser;
 
     protected function setUp()
     {
         $userRepository = new InMemoryUserRepository();
-
-        $appService = new CreateAnUserService($userRepository);
-        $this->anUser = ($appService->execute(new CreateAnUserRequest('pgrau')))->user();
-
-        $this->appService = new DeleteAnUserService($userRepository);
+        $this->appService = new GetAnUserService($userRepository);
     }
 
-    public function testItShouldReturnOneWhenDeleteAnUser()
+    public function testItShouldReturnOneUserWhenFindAnUser()
     {
-        $request = new DeleteAnUserRequest((string) $this->anUser->id());
+        $request = new GetAnUserRequest('pepe');
         $response = $this->appService->execute($request);
 
-        $this->assertSame(1, $response->numUsersAffected());
+        $this->assertInstanceOf(User::class, $response->user());
     }
 
-    public function testItShouldReturnAnExceptionWhenDeleteAnUserAndUserNotExist()
+    public function testItShouldReturnAnExceptionWhenNotFoundAnUser()
     {
-        $this->expectException(DeleteAnUserException::class);
+        $this->expectException(GetAnUserException::class);
 
-        $request = new DeleteAnUserRequest('fake');
+        $request = new GetAnUserRequest('fake');
         $this->appService->execute($request);
     }
 }
