@@ -58,7 +58,7 @@ final class Game
         return $this->playerOne;
     }
 
-    public function playerTwo()
+    public function playerTwo() : User
     {
         return $this->playerTwo;
     }
@@ -87,7 +87,7 @@ final class Game
         return $this->currentPlayer;
     }
 
-    public function winner()
+    public function winner() : ?User
     {
         return $this->winner;
     }
@@ -99,7 +99,7 @@ final class Game
         return $this;
     }
 
-    public function move(int $x, int $y)
+    public function move(int $x, int $y) : void
     {
         $this->validateMovement($x, $y);
 
@@ -155,7 +155,7 @@ final class Game
         return $hasThree;
     }
 
-    private function isVerticalThreeInRow(string $value, int $x, int $y)
+    private function isVerticalThreeInRow(string $value, int $x, int $y) : bool
     {
         $hasThree = true;
         for ($i = 1; $i <= 2; $i++) {
@@ -226,7 +226,7 @@ final class Game
         return $isFull;
     }
 
-    private function autoMove()
+    private function autoMove() : void
     {
         if (! $this->isFinished()) {
             $maxX = count($this->board) - 1;
@@ -243,7 +243,7 @@ final class Game
         }
     }
 
-    private function validateMovement(int $x, int $y)
+    private function validateMovement(int $x, int $y) : void
     {
         if (!array_key_exists($x, $this->board()) || !array_key_exists($y, $this->board()[$x])) {
             $message = 'Not exist position %d %d';
