@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace TicTacToe\Domain\Model;
 
-use Ramsey\Uuid\Uuid;
-
 final class Game
 {
     /** @var \DateTime */
@@ -40,7 +38,7 @@ final class Game
 
         $this->start         = new \DateTimeImmutable();
         $this->playerOne     = $userOne;
-        $this->playerTwo     = $userTwo ?: User::create(UserId::create(Uuid::uuid4()->toString()), 'computer');
+        $this->playerTwo     = $userTwo ?: User::create(UserId::create(), 'computer');
         $this->multiplayer   = $userTwo ? true : false;
         $this->currentPlayer = $userOne;
     }
