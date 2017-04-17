@@ -27,6 +27,10 @@ RUN apt-get update -qq && apt-get install -qqy \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# Install PECL extensions
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
+
 COPY php.ini /usr/local/etc/php/php.ini
 
 COPY start.sh /root/start.sh
