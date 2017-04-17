@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phpunit
+         cacheTokens="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         stopOnError="false"
+         stopOnFailure="false"
+         verbose="false">
+
+    <php>
+        <ini name="intl.default_locale" value="en" />
+        <ini name="intl.error_level" value="0" />
+        <ini name="memory_limit" value="-1" />
+        <ini name="max_execution_time" value="-1" />
+        <ini name="date.timezone" value="Europe/Madrid" />
+        <ini name="error_reporting" value="E_ALL" />
+        <ini name="zend.enable_gc" value="0" />
+    </php>
+
+    <testsuites>
+        <testsuite name="Tic Tac Toe Unit Tests">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+         <whitelist>
+            <directory>src/TicTacToe/Application</directory>
+            <directory>src/TicTacToe/Domain</directory>
+        </whitelist>
+
+        <blacklist>
+            <directory>app</directory>
+            <directory>bin</directory>
+            <directory>doc</directory>
+            <directory>vendor</directory>
+            <directory>src/TicTacToe/Infrastructure</directory>
+        </blacklist>
+    </filter>
+
+    <groups>
+        <exclude>
+        </exclude>
+    </groups>
+
+</phpunit>
