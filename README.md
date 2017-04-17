@@ -15,9 +15,8 @@ php app/console t:g:s
     Custom icon
     Custom icon's color. Availabe colors: black, red, green, yellow, blue, magenta, cyan and white
     User's Repository is implemented in memory. You have two users availables: pepe and juan
-    
-    
-<!--You can see all domain events sent in the logs folder.-->
+    Create an user
+    Remove an user
 
 ## Mandatory requirements
  
