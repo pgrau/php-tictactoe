@@ -18,5 +18,5 @@ script:
   - mkdir -p build/logs
   - php bin/phpunit -c phpunit-metrics-without-infrastructure.xml.dist --coverage-clover build/logs/clover.xml
 
-after_success:
-  - php bin/coveralls -v -c .coveralls.yml
+after_script:
+  - php bin/coveralls -v
