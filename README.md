@@ -1,3 +1,4 @@
+[![Build Status](https://secure.travis-ci.org/pgrau/php-tictactoe.svg?branch=master)](http://travis-ci.org/pgrau/ddd)
 
 Tic Tac Toe is a PHP 7.1 application written following Domain-Driven Design approach.
 
