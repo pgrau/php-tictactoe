@@ -1,20 +1,23 @@
+sudo: false
 
 language: php
 
 php:
-    - 7.1
+  - 7.1
+
+matrix:
+  fast_finish: true
 
 before_install:
-    - composer self-update
+  - composer self-update
 
 install:
-    - composer install
+  - composer install
+  - composer require satooshi/php-coveralls:* --dev
 
 script:
- - mkdir -p build/logs
- - php bin/phpunit -c phpunit-metrics-without-infrastructure.xml.dist --coverage-clover build/logs/clover.xml
+  - mkdir -p build/logs
+  - php bin/phpunit -c phpunit-metrics-without-infrastructure.xml.dist --coverage-clover build/logs/clover.xml
 
-after_script:
- - php bin/coveralls -v
-
-fast_finish: true
+after_success:
+  - php vendor/bin/coveralls -v -c .coveralls.yml
