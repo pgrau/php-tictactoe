@@ -6,11 +6,11 @@ namespace TicTacToe\Domain\Model;
 
 interface UserRepository
 {
-    public function find(string $id);
+    public function find(string $id) : ?User;
 
     public function findOne(string $id) : User;
 
-    public function findByUsername(string $username);
+    public function findByUsername(string $username) : ?User;
 
     public function persist(User $user) : User;
 

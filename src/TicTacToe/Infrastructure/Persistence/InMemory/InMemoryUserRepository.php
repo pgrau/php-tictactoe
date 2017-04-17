@@ -21,7 +21,7 @@ final class InMemoryUserRepository implements UserRepository
         $this->users[] = User::create(UserId::create(Uuid::uuid4()->toString()), 'juan');
     }
 
-    public function persist(User $user) : User
+    public function persist(User $user): User
     {
         $this->validateIfUsernameExist($user->username());
 
@@ -30,7 +30,7 @@ final class InMemoryUserRepository implements UserRepository
         return $user;
     }
 
-    public function delete(User $user) : int
+    public function delete(User $user): int
     {
         $numUsersAffected = 0;
         foreach ($this->users as $key => $item) {
@@ -44,7 +44,7 @@ final class InMemoryUserRepository implements UserRepository
         return $numUsersAffected;
     }
 
-    public function find(string $id) : User
+    public function find(string $id): ?User
     {
         $anUser = null;
         foreach ($this->users as $key => $item) {
@@ -57,7 +57,7 @@ final class InMemoryUserRepository implements UserRepository
         return $anUser;
     }
 
-    public function findByUsername(string $username)
+    public function findByUsername(string $username): ?User
     {
         $anUser = null;
         foreach ($this->users as $key => $item) {
@@ -70,7 +70,7 @@ final class InMemoryUserRepository implements UserRepository
         return $anUser;
     }
 
-    public function findOne(string $id) : User
+    public function findOne(string $id): User
     {
         if (! $anUser = $this->find($id)) {
             throw new \InvalidArgumentException('User not exist');

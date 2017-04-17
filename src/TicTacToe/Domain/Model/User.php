@@ -31,12 +31,12 @@ class User
         return new self($userId, $username, new \DateTime());
     }
 
-    public function id(): UserId
+    public function id() : UserId
     {
         return $this->id;
     }
 
-    public function username(): string
+    public function username() : string
     {
         return $this->username;
     }

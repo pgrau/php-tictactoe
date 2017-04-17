@@ -55,7 +55,7 @@ final class Game
         return $this->icons;
     }
 
-    public function playerOne(): User
+    public function playerOne() : User
     {
         return $this->playerOne;
     }
@@ -65,7 +65,7 @@ final class Game
         return $this->playerTwo;
     }
 
-    public function doBoardFromSize(Size $size)
+    public function doBoardFromSize(Size $size) : void
     {
         for ($x = 0; $x < $size->width(); $x++) {
             for ($y = 0; $y < $size->height(); $y++) {
@@ -116,7 +116,7 @@ final class Game
         }
     }
 
-    private function indicateIfGameIsFinished()
+    private function indicateIfGameIsFinished() : void
     {
         if ($this->isThreeInRow()) {
             $this->winner = $this->currentPlayer;
@@ -164,7 +164,7 @@ final class Game
         return $hasThree;
     }
 
-    private function isDiagonalRightThreeInRow(string $value, int $x, int $y)
+    private function isDiagonalRightThreeInRow(string $value, int $x, int $y) : bool
     {
         $hasThree = true;
         for ($i = 1; $i <= 2; $i++) {
@@ -178,7 +178,7 @@ final class Game
         return $hasThree;
     }
 
-    private function isDiagonalLeftThreeInRow(string $value, int $x, int $y)
+    private function isDiagonalLeftThreeInRow(string $value, int $x, int $y) : bool
     {
         $hasThree = true;
         for ($i = 1; $i <= 2; $i++) {
@@ -192,7 +192,7 @@ final class Game
         return $hasThree;
     }
 
-    private function isHorizontalThreeInRow(string $value, int $x, int $y)
+    private function isHorizontalThreeInRow(string $value, int $x, int $y) : bool
     {
         $hasThree = true;
         for ($i = 1; $i <= 2; $i++) {
