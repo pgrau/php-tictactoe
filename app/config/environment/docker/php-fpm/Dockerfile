@@ -11,6 +11,7 @@ RUN apt-get update -qq && apt-get install -qqy \
         libicu-dev \
         libmcrypt-dev \
         wget \
+        zip \
         apt-utils \
 
     && docker-php-ext-configure intl \
