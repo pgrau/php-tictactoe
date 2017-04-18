@@ -32,7 +32,7 @@ class StartGameCommand extends Command
             ->setName('tictactoe:game:start')
             ->setDescription('Start game')
             ->addArgument('color1', InputArgument::OPTIONAL, 'Color of player 1', 'magenta')
-            ->addArgument('color2', InputArgument::OPTIONAL, 'Color of player 2', 'cian')
+            ->addArgument('color2', InputArgument::OPTIONAL, 'Color of player 2', 'cyan')
             ->addArgument('icon1', InputArgument::OPTIONAL, 'Icon of player 1', ' X ')
             ->addArgument('icon2', InputArgument::OPTIONAL, 'Icon of player 2', ' O ')
         ;
